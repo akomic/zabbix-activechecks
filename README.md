@@ -5,9 +5,11 @@ Retrieves all active check items for given host.
 
 ## Install
 
+The latest version [is available on PyPI](https://pypi.python.org/pypi/zabbixactivechecks).
+
 With `pip`:
 
-    pip install zabbixactivechecks
+    pip3 install zabbixactivechecks
 
 
 ## Usage
