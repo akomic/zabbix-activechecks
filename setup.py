@@ -20,7 +20,7 @@ setup(
     author_email='akomic@gmail.com',
     license='GPL',
     url='https://github.com/akomic/zabbix-activechecks',
-    download_url='https://github.com/MattParr/zabbix-sender/tarball/0.0.8.4',
+    download_url='https://github.com/akomic/zabbix-activechecks',
     keywords=['monitoring', 'zabbix', 'trappers'],
     classifiers=[],
 )
