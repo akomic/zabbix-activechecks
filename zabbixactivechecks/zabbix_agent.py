@@ -3,7 +3,7 @@ import socket
 import struct
 import json
 
-__version__ = '0.0.1'
+__version__ = '0.0.2'
 
 logger = logging.getLogger(__name__)
 DEFAULT_SOCKET_TIMEOUT = 5.0
@@ -77,7 +77,12 @@ class ZabbixTrapperResponse(object):
     def parse_raw_response(self):
         try:
             json_response = json.loads(self.raw_response)
-            response = json_response['data']
+            if json_response['response'] == 'failed':
+                logger.warning('Fetching items failed with: '.format(
+                    json_response['info']))
+                response = []
+            else:
+                response = json_response['data']
         except Exception:
             logger.exception('Error parsing raw response')
             raise ZabbixInvalidResponseError(self.raw_response)
