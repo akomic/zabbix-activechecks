@@ -94,9 +94,14 @@ class ItemList(object):
     def __init__(self, host):
         self.host = host
 
-    def get(self, server, port=10051):
-        packet = json.dumps({
+    def get(self, server, port=10051, hostMetadata=None):
+        raw_packet = {
             'request': 'active checks',
             'host': self.host
-        })
+        }
+        if hostMetadata is not None:
+            raw_packet['host_metadata'] = hostMetadata
+
+        packet = json.dumps(raw_packet)
+        print('PACKET:', packet)
         return send(packet, server, port)
