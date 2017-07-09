@@ -3,7 +3,7 @@ import socket
 import struct
 import json
 
-__version__ = '0.0.3'
+__version__ = '0.0.5'
 
 logger = logging.getLogger(__name__)
 DEFAULT_SOCKET_TIMEOUT = 5.0
@@ -78,8 +78,8 @@ class ZabbixTrapperResponse(object):
         try:
             json_response = json.loads(self.raw_response)
             if json_response['response'] == 'failed':
-                logger.warning('Fetching items failed with: '.format(
-                    json_response['info']))
+                logger.warning('Fetching items failed: {0}'.format(
+                    json_response))
                 response = []
             else:
                 response = json_response['data']
@@ -103,5 +103,4 @@ class ItemList(object):
             raw_packet['host_metadata'] = hostMetadata
 
         packet = json.dumps(raw_packet)
-        print('PACKET:', packet)
         return send(packet, server, port)

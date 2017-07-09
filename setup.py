@@ -6,7 +6,7 @@ from distutils.core import setup
 setup(
     name='zabbixactivechecks',
     packages=['zabbixactivechecks'],
-    version='0.0.3',
+    version='0.0.5',
 
     description='Implementation of Zabbix Agent Active checks protocol',
     long_description=(
